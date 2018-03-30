@@ -21,7 +21,7 @@ def find_docs(term, index):
 def search(terms, index):
     docs = find_docs(terms[0], index)
     for term in terms[1:]:
-        docs.intersection(find_docs(term, index))
+        docs = docs.intersection(find_docs(term, index))
     return sorted(docs)
 
 
