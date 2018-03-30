@@ -1,7 +1,7 @@
 import pickle as pkl
 import struct
 
-from indexes.index import decode_vb_array
+from index import decode_vb_array
 
 id_url = {}
 term_position = {}
@@ -22,7 +22,7 @@ def search(terms, index):
     docs = find_docs(terms[0], index)
     for term in terms[1:]:
         docs.intersection(find_docs(term, index))
-    return docs
+    return sorted(docs)
 
 
 if __name__ == '__main__':

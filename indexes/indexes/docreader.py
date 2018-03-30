@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import argparse
-import document_pb2
-import struct
 import gzip
-import sys
+import struct
+
+import document_pb2
 
 
 class DocumentStreamReader:
@@ -30,6 +30,7 @@ class DocumentStreamReader:
 
 def parse_command_line():
     parser = argparse.ArgumentParser(description='compressed documents reader')
+    parser.add_argument('c', nargs=1, help='varbyte only', type=str)
     parser.add_argument('files', nargs='+', help='Input files (.gz or plain) to process')
     return parser.parse_args()
 

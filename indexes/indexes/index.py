@@ -1,9 +1,10 @@
-from collections import defaultdict
 import pickle as pkl
 import struct
+from collections import defaultdict
 
-from indexes.docwork import docreader
-from indexes.docwork.doc2words import extract_words
+from doc2words import extract_words
+
+import docreader
 
 
 def code_to_byte(id):
@@ -63,8 +64,6 @@ if __name__ == '__main__':
             docids[i] = docids[i] - docids[i - 1]
         docids = filter(lambda x: x != 0, docids)
         mdict[term] = docids
-
-    print mdict['mirror']
 
     for word in mdict.keys():
         mdict[word] = code_varbyte(mdict[word])
